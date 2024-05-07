@@ -22,7 +22,7 @@ spec:
               memory: 1Gi
           readinessProbe:
             httpGet:
-              path: /test
+              path: /api/test
               port: 4000
 ---
 apiVersion: v1
