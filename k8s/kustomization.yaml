@@ -1,0 +1,6 @@
+namespace: default
+resources:
+  # - nginx.yaml
+  - postgrew.yaml
+  - backend.yaml
+  - frontend.yaml
