@@ -13,7 +13,7 @@ spec:
     spec:
       containers:
         - name: backend
-          image: krmp-d2hub-idock.9rum.cc/dev-test/repo_e5bc3531cfb3 # 우리 백 이미지
+          image: krmp-d2hub-idock.9rum.cc/dev-test/repo_93b1eb05f841 # 우리 백 이미지
           # env:
           #   - name: DATABASE_URL
           #     value: jdbc:mariadb://mariadb:3306/krampoline
