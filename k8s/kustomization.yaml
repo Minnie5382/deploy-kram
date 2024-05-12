@@ -1,10 +1,10 @@
 namespace: default
 resources:
-  - nginx.yaml
+  # - nginx.yaml
   - postgres.yaml
   - backend.yaml
   - frontend.yaml
-configMapGenerator:
-  - name: nginx
-    files:
-      - configs/default.conf
+# configMapGenerator:
+#   - name: nginx
+#     files:
+#       - configs/default.conf
