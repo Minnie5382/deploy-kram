@@ -4,7 +4,6 @@ resources:
   - postgres.yaml
   - backend.yaml
   - frontend.yaml
-  - docker.yaml
 configMapGenerator:
   - name: nginx
     files:
