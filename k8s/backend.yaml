@@ -17,9 +17,6 @@ spec:
           resources:
             requests:
               memory: 1Gi
-          envFrom:
-          - configMapRef:
-            name: spring-config
           # readinessProbe:
           #   httpGet:
           #     path: /api/test
