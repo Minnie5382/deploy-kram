@@ -13,7 +13,8 @@ spec:
     spec:
       containers:
         - name: backend
-          image: krmp-d2hub-idock.9rum.cc/dev-test/repo_59794862cc10 # cineffi/backend 실제 레포
+          # image: krmp-d2hub-idock.9rum.cc/dev-test/repo_59794862cc10 # cineffi/backend 실제 레포
+          image: krmp-d2hub-idock.9rum.cc/dev-test/repo_d93e137a92f3 # backend-test 레포
           resources:
             requests:
               memory: 1Gi
