@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: redis
-        image: krmp-d2hub-idock.9rum.cc/dev-test/repo_a09fba91af9f # redis 이미지
+        image: krmp-d2hub-idock.9rum.cc/dev-test/repo_a74b5fdc4da3 # redis 이미지
         ports:
         - containerPort: 6379
         env:
