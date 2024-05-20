@@ -13,7 +13,7 @@ spec:
     spec:
       containers:
         - name: frontend
-          image: krmp-d2hub-idock.9rum.cc/dev-test/repo_23cce92533c5 # 우리 프론트엔드 테스트 Repo
+          image: krmp-d2hub-idock.9rum.cc/dev-test/repo_3448f97cde56 # 우리 프론트엔드 테스트 Repo
 ---
 apiVersion: v1
 kind: Service
