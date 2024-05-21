@@ -51,6 +51,6 @@ data:
   # kobis_api_key: ac0934e1fbde3331f44992550b1e1d9d #7
   # kobis_api_key: ab9624b11878afc7bbcafef6409d81c1 #8
   # kobis_api_key: c305d916b8f8d83032f21878c3db1c16 #9
-  kobis_api_key: 333eabf2df141a538e910bae70243fc1 #10
+  # kobis_api_key: 333eabf2df141a538e910bae70243fc1 #10
   # kobis_api_key: 0994d8ac050005fb257070390088ea85 #11
-  # kobis_api_key: eb64f7ff5664a19e68063e2369de4cda #12
+  kobis_api_key: eb64f7ff5664a19e68063e2369de4cda #12
