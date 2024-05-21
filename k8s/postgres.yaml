@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: postgres
-        image: postgres:13
+        image: krmp-d2hub-idock.9rum.cc/dev-test/repo_d710bddef264
         env:
         - name: POSTGRES_PASSWORD
           value: "n1234"
