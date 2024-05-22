@@ -24,6 +24,12 @@ spec:
                 configMapKeyRef:
                   name: backend-configmap          # 이 값의 컨피그맵.
                   key: kobis_api_key # 가져올 키.
+            - name: DDL_AUTO # 참고로 여기서는 컨피그맵의 키 이름과 대소문자가 다르다.
+              valueFrom:
+                configMapKeyRef:
+                  name: backend-configmap          # 이 값의 컨피그맵.
+                  key: ddl-auto # 가져올 키.
+            
 
 ---
 apiVersion: v1
@@ -42,6 +48,7 @@ kind: ConfigMap
 metadata:
   name: backend-configmap
 data:
+  ddl-auto: create
   kobis_api_key: 5b5979d8f9822605465799f4de0d864a #1
   # kobis_api_key: f97089e51098e3098753d84bea65f507 #2
   # kobis_api_key: 5873d607725ac6c9564a8954da0c178a #3
