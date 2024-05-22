@@ -1,11 +1,9 @@
-# StatefulSet
 apiVersion: apps/v1
-kind: StatefulSet
+kind: Deployment
 metadata:
   name: postgres
 spec:
-  serviceName: "postgres"
-  replicas: 2
+  replicas: 1  # 원하는 파드 수
   selector:
     matchLabels:
       app: postgres
@@ -16,106 +14,45 @@ spec:
     spec:
       containers:
       - name: postgres
-        image: krmp-d2hub-idock.9rum.cc/dev-test/repo_d710bddef264
+        image: krmp-d2hub-idock.9rum.cc/dev-test/repo_d710bddef264  # postgres 이미지
         env:
+        - name: POSTGRES_DB
+          value: "cineffi"
+        - name: POSTGRES_USER
+          value: "root"
         - name: POSTGRES_PASSWORD
           value: "n1234"
-        - name: REPLICATION_PASSWORD
-          value: "n1234"
         ports:
-        - containerPort: 5432
+        - containerPort: 5432  # PostgreSQL 기본 포트
         volumeMounts:
-        - name: data
-          mountPath: /var/lib/postgresql/data
-        - name: config
-          mountPath: /etc/postgresql
-        - name: recovery
-          mountPath: /var/lib/postgresql/data/recovery.conf
-          subPath: recovery.conf
+        - name: postgres-volume
+          mountPath: /var/lib/postgres
       volumes:
-      - name: config
-        configMap:
-          name: postgres-config
-          items:
-          - key: postgresql.conf
-            path: postgresql.conf
-          - key: pg_hba.conf
-            path: pg_hba.conf
-          - key: recovery.conf
-            path: recovery.conf
-  volumeClaimTemplates:
-  - metadata:
-      name: data
-    spec:
-      accessModes: [ "ReadWriteOnce" ]
-      resources:
-        requests:
-          storage: 30Gi
+      - name: postgres-volume
+        persistentVolumeClaim:
+          claimName: postgres-pvc
+
 ---
-# StatefulSet을 위한 Headless 서비스
 apiVersion: v1
 kind: Service
 metadata:
-  name: postgres
+  name: db
 spec:
-  clusterIP: None
   selector:
     app: postgres
   ports:
   - port: 5432
     targetPort: 5432
     protocol: TCP
+
 ---
-# Master 서비스
 apiVersion: v1
-kind: Service
+kind: PersistentVolumeClaim
 metadata:
-  name: postgres-master
+  name: postgres-pvc
 spec:
-  selector:
-    app: postgres
-    statefulset.kubernetes.io/pod-name: postgres-0
-  ports:
-  - name: postgres
-    port: 5432
-
----
-# Slave 서비스
-apiVersion: v1
-kind: Service
-metadata:
-  name: postgres-slave
-spec:
-  selector:
-    app: postgres
-    statefulset.kubernetes.io/pod-name: postgres-1
-  ports:
-  - name: postgres
-    port: 5432
-
----
-# ConfigMap
-apiVersion: v1
-kind: ConfigMap
-metadata:
-  name: postgres-config
-data:
-  postgresql.conf: |
-    # 설정 파일 내용 (공유 설정)
-    listen_addresses = '*'
-    wal_level = replica
-    max_wal_senders = 10
-    wal_keep_size = 64
-    archive_mode = on
-    archive_command = 'cp %p /var/lib/postgresql/data/archive/%f'
-  pg_hba.conf: |
-    # 접근 제어 설정
-    host replication all 0.0.0.0/0 md5
-    host all all 0.0.0.0/0 md5
-  recovery.conf: |
-    standby_mode = 'on'
-    primary_conninfo = 'host=postgres-0.postgres.db.svc.cluster.local port=5432 user=replication password=n1234'
-    trigger_file = '/tmp/postgresql.trigger.5432'
-
-
-
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 30Gi
