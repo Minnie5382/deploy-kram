@@ -50,8 +50,8 @@ metadata:
 data:
   ddl_auto: none
   # kobis_api_key: 5b5979d8f9822605465799f4de0d864a #1
-  kobis_api_key: f97089e51098e3098753d84bea65f507 #2
-  # kobis_api_key: 5873d607725ac6c9564a8954da0c178a #3
+  # kobis_api_key: f97089e51098e3098753d84bea65f507 #2
+  kobis_api_key: 5873d607725ac6c9564a8954da0c178a #3
   # kobis_api_key: 7af2e7f58134765d4308a5096295d274 #4
   # kobis_api_key: 2a45813037fb723c2d8b3dbd808e1328 #5
   # kobis_api_key: 4564a256f40c78acde5f8406a7b65dc6 #6
