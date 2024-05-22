@@ -42,7 +42,7 @@ kind: ConfigMap
 metadata:
   name: backend-configmap
 data:
-  # kobis_api_key: 5b5979d8f9822605465799f4de0d864a #1
+  kobis_api_key: 5b5979d8f9822605465799f4de0d864a #1
   # kobis_api_key: f97089e51098e3098753d84bea65f507 #2
   # kobis_api_key: 5873d607725ac6c9564a8954da0c178a #3
   # kobis_api_key: 7af2e7f58134765d4308a5096295d274 #4
@@ -53,7 +53,7 @@ data:
   # kobis_api_key: c305d916b8f8d83032f21878c3db1c16 #9
   # kobis_api_key: 333eabf2df141a538e910bae70243fc1 #10
   # kobis_api_key: 0994d8ac050005fb257070390088ea85 #11
-  kobis_api_key: eb64f7ff5664a19e68063e2369de4cda #12
+  # kobis_api_key: eb64f7ff5664a19e68063e2369de4cda #12
 ---
 apiVersion: autoscaling/v2beta2
 kind: HorizontalPodAutoscaler
